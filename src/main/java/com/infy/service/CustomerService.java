@@ -12,4 +12,11 @@ public interface CustomerService {
     // Read Operation
     public CustomerDTO getCustomer(Integer customerId) throws InfyBankException;
     public List<CustomerDTO> findAll() throws InfyBankException;
+
+    // UPDATE Operation
+    public void updateCustomer(Integer customerId, String email) throws InfyBankException;
+
+    //DELETE Operation
+    public void deleteCustomer(Integer customerId) throws InfyBankException;
+
 }

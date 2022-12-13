@@ -65,4 +65,20 @@ public class CustomerServiceImpl implements CustomerService {
         return customerDTOS;
     }
 
+    // UPDATE Operation
+    @Override
+    public void updateCustomer(Integer customerId, String emailId) throws InfyBankException{
+        Optional<Customer> optional = customerRepository.findById(customerId);
+        Customer customer = optional.orElseThrow(() -> new InfyBankException("Service.CUSTOMER_NOT_FOUND"));
+        customer.setEmailId(emailId);
+    }
+
+    //DELETE Operation
+    @Override
+    public void deleteCustomer(Integer customerId) throws InfyBankException {
+        Optional<Customer> optional = customerRepository.findById(customerId);
+        optional.orElseThrow(() -> new InfyBankException("Service.CUSTOMER_NOT_FOUND"));
+        customerRepository.deleteById(customerId);
+    }
+
 }

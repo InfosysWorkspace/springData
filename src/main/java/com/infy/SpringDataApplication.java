@@ -59,8 +59,10 @@ public class SpringDataApplication implements CommandLineRunner {
 
 	public void run(String... args) throws Exception{
 //		addCustomer();
-		getCustomer();
-		findAllCustomers();
+//		getCustomer();
+//		findAllCustomers();
+//		updateCustomer();
+		deleteCustomer();
 	}
 
 	public void addCustomer(){
@@ -99,6 +101,29 @@ public class SpringDataApplication implements CommandLineRunner {
 			if (e.getMessage() != null)
 				LOGGER.info(environment.getProperty(e.getMessage(),
 					"Something went wrong. Please check log file for more details."));
+		}
+	}
+
+	// UPDATE Operation
+	public void updateCustomer(){
+		try{
+			customerService.updateCustomer(2, "nasir02@infy.com");
+			LOGGER.info(environment.getProperty("UserInterface.UPDATE_SUCCESS"));
+		} catch (Exception e){
+			if(e.getMessage() != null)
+				LOGGER.info(environment.getProperty(e.getMessage(), "Something went wrong. Please check log file for more details."));
+		}
+	}
+
+	// DELETE Operation
+	public void deleteCustomer(){
+		try{
+			customerService.deleteCustomer(3);
+			LOGGER.info(environment.getProperty("UserInterface.DELETE_SUCCESS"));
+		} catch (Exception e){
+			if(e.getMessage() != null)
+				LOGGER.info(environment.getProperty(e.getMessage(),
+						"Something went wrong. Please check log file for more details."));
 		}
 	}
 
